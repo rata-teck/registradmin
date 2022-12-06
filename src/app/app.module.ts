@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import {QRCodeModule} from 'angularx-qrcode';
 import { DescargaComponent } from './paginas/descarga/descarga.component';
 import { InicioComponent } from './paginas/inicio/inicio.component';
 import {RouterModule} from '@angular/router';
@@ -12,6 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {PuenteService} from './servicios/puente.service';
 import {PortalComponent} from './paginas/docente/portal/portal.component';
+//import {QRCodeModule} from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import {PortalComponent} from './paginas/docente/portal/portal.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    QRCodeModule,
+    //QRCodeModule,
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule

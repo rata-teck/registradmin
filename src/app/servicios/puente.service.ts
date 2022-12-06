@@ -48,10 +48,10 @@ export class PuenteService {
 
   public servidor : string = '';
 
-  public obtenerDireccion() : void{
-    const ip = require("local-ip-address");
-    this.servidor = ip();
-  }
+  //public obtenerDireccion() : void{
+    //const ip = require("local-ip-address");
+    //this.servidor = ip();
+  //}
 
   public buscarDocente(correo : string, clave : string) : void{
     this.cliente.get<Docente>(this.servidor+':3000/docentes/'+correo).subscribe(data => {

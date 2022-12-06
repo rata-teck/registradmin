@@ -6,15 +6,15 @@ import {PortalComponent} from './paginas/docente/portal/portal.component';
 
 const routes: Routes = [
   {
-    path: '/',
+    path: '',
     component: DescargaComponent
   },
   {
-    path: '/acceso',
+    path: 'acceso',
     component: InicioComponent
   },
   {
-    path: '/docente/inicio',
+    path: 'docente/inicio',
     component: PortalComponent
   }
 ];
