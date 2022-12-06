@@ -3,7 +3,8 @@
       {
         "nombre":"Inglés intermedio",
         "sigla":"INU3111",
-        "seccion":"001D"
+        "seccion":"001D",
+        "id":"INU3111-001D"
       }
     ],
     "docentes":[
@@ -18,7 +19,8 @@
           {
             "nombre":"Inglés intermedio",
             "sigla":"INU3111",
-            "seccion":"001D"
+            "seccion":"001D",
+            "id":"INU3111-001D"
           }
         ]
       }
@@ -37,8 +39,11 @@
             "asignatura":{
               "nombre":"Inglés intermedio",
               "sigla":"INU3111",
-              "seccion":"001D"
-            }
+              "seccion":"001D",
+              "id":"INU3111-001D"
+            },
+            "estado":"Presente",
+            "fecha":"29/11/2022"
           }
         ]
       }

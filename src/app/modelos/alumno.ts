@@ -1,8 +1,7 @@
-import { Asignatura } from "./asignatura";
 type Asistencia = {
-  asignatura : Asignatura,
+  asignatura : string,
   estado : 'Presente' | 'Ausente' | 'Justificado',
-  fecha : Date
+  fecha : string
 }
 
 export interface Alumno {

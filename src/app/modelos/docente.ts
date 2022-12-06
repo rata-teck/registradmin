@@ -1,4 +1,3 @@
-import {Asignatura} from './asignatura';
 export interface Docente {
   nombre : string,
   apellido : string,
@@ -6,5 +5,5 @@ export interface Docente {
   genero : 'Masculino'|'Femenino',
   id: string, //email
   clave: string,
-  asignaturas : Array<Asignatura>
+  asignaturas : Array<string>
 }
