@@ -8,6 +8,8 @@ type Asistencia = {
 export interface Alumno {
   nombre : string,
   apellido : string,
+  id : string, //email
+  clave : string
   edad : number,
   genero : 'Masculino'|'Femenino',
   carrera : string,

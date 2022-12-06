@@ -7,19 +7,30 @@ import { AppComponent } from './app.component';
 import {QRCodeModule} from 'angularx-qrcode';
 import { DescargaComponent } from './paginas/descarga/descarga.component';
 import { InicioComponent } from './paginas/inicio/inicio.component';
+import {RouterModule} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {PuenteService} from './servicios/puente.service';
+import {PortalComponent} from './paginas/docente/portal/portal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DescargaComponent,
-    InicioComponent
+    InicioComponent,
+    PortalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    QRCodeModule
+    QRCodeModule,
+    RouterModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    PuenteService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

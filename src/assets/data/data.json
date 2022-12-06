@@ -1,5 +1,46 @@
 {
-    "asignaturas":[],
-    "docentes":[],
-    "alumnos":[]
+    "asignaturas":[
+      {
+        "nombre":"Inglés intermedio",
+        "sigla":"INU3111",
+        "seccion":"001D"
+      }
+    ],
+    "docentes":[
+      {
+        "nombre":"Señor",
+        "apellido":"Jirafales",
+        "especialidad":"General / S.E.",
+        "genero":"Masculino",
+        "id":"mrlonganiza@ch8.mx",
+        "clave":"florinda4ever",
+        "asignaturas":[
+          {
+            "nombre":"Inglés intermedio",
+            "sigla":"INU3111",
+            "seccion":"001D"
+          }
+        ]
+      }
+    ],
+    "alumnos":[
+      {
+        "nombre":"Chilindrina",
+        "apellido":"Valdés",
+        "id":"weeewewewe@ch8.mx",
+        "clave":"paleta",
+        "edad":12,
+        "genero":"Femenino",
+        "carrera":"Guía de turismo",
+        "asistencias":[
+          {
+            "asignatura":{
+              "nombre":"Inglés intermedio",
+              "sigla":"INU3111",
+              "seccion":"001D"
+            }
+          }
+        ]
+      }
+    ]
 }

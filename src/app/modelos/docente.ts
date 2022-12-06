@@ -4,7 +4,7 @@ export interface Docente {
   apellido : string,
   especialidad : string,
   genero : 'Masculino'|'Femenino',
-  correo: string,
+  id: string, //email
   clave: string,
   asignaturas : Array<Asignatura>
 }
