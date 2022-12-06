@@ -11,7 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {PuenteService} from './servicios/puente.service';
 import {PortalComponent} from './paginas/docente/portal/portal.component';
-//import {QRCodeModule} from 'angularx-qrcode';
+import {QrCodeModule} from 'ng-qrcode';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import {PortalComponent} from './paginas/docente/portal/portal.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    //QRCodeModule,
+    QrCodeModule,
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule

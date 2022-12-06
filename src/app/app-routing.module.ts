@@ -14,7 +14,7 @@ const routes: Routes = [
     component: InicioComponent
   },
   {
-    path: 'docente/inicio',
+    path: 'docente',
     component: PortalComponent
   }
 ];
