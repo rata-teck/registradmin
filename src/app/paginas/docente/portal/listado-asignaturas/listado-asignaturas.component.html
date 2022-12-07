@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Listado de asignaturas</h1><br><br>
+  <table class="table table-stripped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Sigla</th>
+        <th>Sección</th>
+        <th>Asistencia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of asignaturas">
+        <td>{{x.nombre}}</td>
+        <td>{{x.sigla}}</td>
+        <td>{{x.seccion}}</td>
+        <td>
+          <button type="button" (click)="laGarraSeMueve(x.id)">Generar código QR</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

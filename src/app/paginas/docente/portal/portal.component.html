@@ -1,1 +1,32 @@
-<p>inicio works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal docente - RegistrAPP</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+  <ul class="nav navbar-right">
+    <li class="nav-item">
+      <h1><a>RegistrAPP</a></h1>
+    </li>
+    <li class="nav-item">
+      <h4><a class="nav-link">de Duoc UC</a></h4>
+    </li>
+    <li class="nav-item">
+      <h2><a class="nav-link">Portal docente</a></h2>
+    </li>
+  </ul>
+  <ul class="nav navbar-left">
+    <li class="nav-item">
+      <h1><a href="/" style="background-color: mediumblue; color: white; border-radius: 10px;">Cerrar sesión</a></h1>
+    </li>
+  </ul>
+</nav><br><br>
+<app-listado-asignaturas *ngIf="modo == 1" [asignaturas]="datos.asignaturas" (laGarra)="elegirAsignatura($event)"></app-listado-asignaturas>
+<app-qr-asignatura *ngIf="modo == 2" [data]="datos.qrData"></app-qr-asignatura>
+</body>
+</html>

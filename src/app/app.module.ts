@@ -12,13 +12,19 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {PuenteService} from './servicios/puente.service';
 import {PortalComponent} from './paginas/docente/portal/portal.component';
 import {QrCodeModule} from 'ng-qrcode';
+import { ListadoAsignaturasComponent } from './paginas/docente/portal/listado-asignaturas/listado-asignaturas.component';
+import { QrAsignaturaComponent } from './paginas/docente/portal/qr-asignatura/qr-asignatura.component';
+import { CalendarioPipe } from './servicios/calendario.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     DescargaComponent,
     InicioComponent,
-    PortalComponent
+    PortalComponent,
+    ListadoAsignaturasComponent,
+    QrAsignaturaComponent,
+    CalendarioPipe
   ],
   imports: [
     BrowserModule,

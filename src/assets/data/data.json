@@ -1,28 +1,21 @@
 {
     "asignaturas":[
       {
-        "nombre":"Inglés intermedio",
-        "sigla":"INU3111",
+        "nombre":"Ciencias Naturales",
+        "sigla":"CNU1010",
         "seccion":"001D",
-        "id":"INU3111-001D"
+        "id":"CNU1010-001D"
       }
     ],
     "docentes":[
       {
-        "nombre":"Señor",
+        "nombre":"Profesor",
         "apellido":"Jirafales",
-        "especialidad":"S.E.",
+        "especialidad":"Cultura general",
         "genero":"Masculino",
         "id":"mrlonganiza@ch8.mx",
         "clave":"florinda4ever",
-        "asignaturas":[
-          {
-            "nombre":"Inglés intermedio",
-            "sigla":"INU3111",
-            "seccion":"001D",
-            "id":"INU3111-001D"
-          }
-        ]
+        "asignaturas":["CNU1010-001D"]
       }
     ],
     "alumnos":[
@@ -33,19 +26,28 @@
         "clave":"paleta",
         "edad":12,
         "genero":"Femenino",
-        "carrera":"Guía de turismo",
-        "asistencias":[
-          {
-            "asignatura":{
-              "nombre":"Inglés intermedio",
-              "sigla":"INU3111",
-              "seccion":"001D",
-              "id":"INU3111-001D"
-            },
-            "estado":"Presente",
-            "fecha":"29/11/2022"
-          }
-        ]
+        "carrera":"Feriante",
+        "asistencias":[]
+      },
+      {
+        "nombre":"Kiko",
+        "apellido":"Villagrán",
+        "id":"mimamamemima@ch8.mx",
+        "clave":"chusmachusma",
+        "edad":10,
+        "genero":"Masculino",
+        "carrera":"Promotor de DirecTV",
+        "asistencias":[]
+      },
+      {
+        "nombre":"Chavo",
+        "apellido":"Gomez",
+        "id":"tortadejamon@ch8.mx",
+        "clave":"semechispotio",
+        "edad":13,
+        "genero":"Masculino",
+        "carrera":"Vendedor de helados",
+        "asistencias":[]
       }
     ]
 }

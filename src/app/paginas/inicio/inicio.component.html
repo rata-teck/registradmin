@@ -11,6 +11,17 @@
   <div align="center">
   <div style="width: 60%;  border-radius: 20px; border-top: 2px solid black; border-bottom: 2px solid black; border-left: 2px solid black; border-right: 2px solid black;"><br><br>
     <h1>Acceso docente</h1><br><br><br><br>
+    <input type="hidden" value="{{fecha1 | calendario}}" (input)="tomaFecha($event)">
+    <div class="row">
+      <div class="col-4">
+        <h4>URL</h4>
+      </div>
+      <div class="col-8">
+        <h4>
+          http://<input type="number" style="width: 10%;" [value]="ip1" (input)="cambiaIp1($event)" min="0" required>.<input type="number" style="width: 10%;" [value]="ip2" (input)="cambiaIp2($event)" min="0" required>.<input type="number" style="width: 10%;" [value]="ip3" (input)="cambiaIp3($event)" min="0" required>.<input type="number" style="width: 10%;" [value]="ip4" (click)="cambiaIp4($event)" min="0" required>:4200/acceso
+        </h4>
+      </div>
+    </div>
     <div class="row">
       <div class="col-4">
         <h4>Correo electrónico</h4>
