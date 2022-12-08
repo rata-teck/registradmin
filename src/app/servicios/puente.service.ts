@@ -100,4 +100,7 @@ export class PuenteService {
     });
   }
 
+  public verIp() : void{
+  }
+
 }

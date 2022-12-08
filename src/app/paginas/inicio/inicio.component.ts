@@ -71,6 +71,7 @@ export class InicioComponent {
   }
 
   public enviarDatos() : void{
+    //this.datos.verIp();
     this.datos.buscarDocente(this.correo, this.clave, this.ip1, this.ip2, this.ip3, this.ip4, this.fecha);
   }
 }
