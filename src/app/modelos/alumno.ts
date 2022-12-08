@@ -1,7 +1,7 @@
 type Asistencia = {
   asignatura : string,
   estado : 'Presente' | 'Ausente' | 'Justificado',
-  fecha : string
+  fecha : number
 }
 
 export interface Alumno {

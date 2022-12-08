@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {PuenteService} from './../../servicios/puente.service';
 
@@ -11,8 +12,7 @@ export class InicioComponent {
     public datos : PuenteService
   ){}
 
-  public fecha1 : number  = 0;
-  public fecha2 : string =  "";
+  public fecha : number = 0;
 
   public correo : string = '';
   public clave : string = '';
@@ -24,33 +24,53 @@ export class InicioComponent {
 
   public cambiaCorreo(event : Event) : void{
     this.correo = (event.target as HTMLInputElement).value;
-    this.fecha1 = Date.now();
+    this.fecha = Date.now();
   }
   public cambiaClave(event : Event) : void{
     this.clave = (event.target as HTMLInputElement).value;
   }
 
-  public tomaFecha(evento : Event): void{
-    this.fecha2 = (evento.target as HTMLInputElement).value;
-  }
-
   public cambiaIp1(event : Event) : void{
-    this.ip1 = parseInt((event.target as HTMLInputElement).value);
+    const a1 = Number((event.target as HTMLInputElement).value);
+    if(isNaN(a1)){
+      this.ip1 = 0;
+    }
+    else{
+      this.ip1 = a1;
+    }
   }
 
   public cambiaIp2(event : Event) : void{
-    this.ip2 = parseInt((event.target as HTMLInputElement).value);
+    const a1 = Number((event.target as HTMLInputElement).value);
+    if(isNaN(a1)){
+      this.ip2 = 0;
+    }
+    else{
+      this.ip2 = a1;
+    }
   }
 
   public cambiaIp3(event : Event) : void{
-    this.ip3 = parseInt((event.target as HTMLInputElement).value);
+    const a1 = Number((event.target as HTMLInputElement).value);
+    if(isNaN(a1)){
+      this.ip3 = 0;
+    }
+    else{
+      this.ip3 = a1;
+    }
   }
 
   public cambiaIp4(event : Event) : void{
-    this.ip4 = parseInt((event.target as HTMLInputElement).value);
+    const a1 = Number((event.target as HTMLInputElement).value);
+    if(isNaN(a1)){
+      this.ip4 = 0;
+    }
+    else{
+      this.ip4 = a1;
+    }
   }
 
   public enviarDatos() : void{
-    this.datos.buscarDocente(this.correo, this.clave, this.ip1, this.ip2, this.ip3, this.ip4, this.fecha2);
+    this.datos.buscarDocente(this.correo, this.clave, this.ip1, this.ip2, this.ip3, this.ip4, this.fecha);
   }
 }
