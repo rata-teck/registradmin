@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class QrAsignaturaComponent {
   @Input()
-  public data! : Array<any>;
+  public data! : any;
 
   @Output()
   private espada = new EventEmitter();

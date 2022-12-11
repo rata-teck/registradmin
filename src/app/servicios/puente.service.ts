@@ -55,7 +55,14 @@ export class PuenteService {
 
   public fecha : string = "";
 
-  public qrData : Array<string> = [];
+  public qrData = {
+    s1 : 0,
+    s2 : 0,
+    s3 : 0,
+    s4 : 0,
+    fecha : 0,
+    asignatura: ''
+  }
 
   //public obtenerDireccion() : void{
     //const ip = require("local-ip-address");
@@ -64,7 +71,6 @@ export class PuenteService {
 
   public buscarDocente(correo : string, clave : string, ip1 : number, ip2 : number, ip3 : number, ip4 : number, fecha : number) : void{
     this.bdd = 'http://'+ip1+'.'+ip2+'.'+ip3+'.'+ip4+':4200/api';
-    this.qrData = [];
     this.cliente.get<Docente>(this.bdd+'/docentes/'+correo).subscribe(data => {
       if(data.clave == clave){
         this.docente = {...data}
@@ -75,12 +81,15 @@ export class PuenteService {
         this.mensaje = 'Error de credenciales';
       }
     });
-    this.qrData.push(this.bdd);
-    this.qrData.push(' '+fecha.toString());
+    this.qrData.s1 = ip1;
+    this.qrData.s2 = ip2;
+    this.qrData.s3 = ip3;
+    this.qrData.s4 = ip4;
+    this.qrData.fecha = fecha;
   }
 
   public buscarAsignatura(codigo : string) : void{
-    this.qrData.push(' '+codigo);
+    this.qrData.asignatura = codigo;
     this.cliente.get<Asignatura>(this.bdd+'/asignaturas/'+codigo).subscribe(data => {
       this.asignatura = {...data}
     });
