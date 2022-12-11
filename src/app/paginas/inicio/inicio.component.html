@@ -22,7 +22,7 @@
       </div>
       <div class="col-8">
         <h4>
-          http://<input type="number" style="width: 10%;" [value]="ip1" (input)="cambiaIp1($event)" min="0" required>.<input type="number" style="width: 10%;" [value]="ip2" (input)="cambiaIp2($event)" min="0" required>.<input type="number" style="width: 10%;" [value]="ip3" (input)="cambiaIp3($event)" min="0" required>.<input type="number" style="width: 10%;" [value]="ip4" (click)="cambiaIp4($event)" min="0" required>:4200/acceso
+          http://<input type="number" style="width: 10%;" [formControl]="a1">.<input type="number" style="width: 10%;" [formControl]="a2">.<input type="number" style="width: 10%;" [formControl]="a3">.<input type="number" style="width: 10%;" [formControl]="a4">:4200/acceso
         </h4>
       </div>
     </div>
@@ -31,7 +31,7 @@
         <h4>Correo electrónico</h4>
       </div>
       <div class="col-8">
-        <input type="email" placeholder="usuario@dominio.cl" style="width:80%;" [value]="correo" (input)="cambiaCorreo($event)">
+        <input type="email" style="width:80%;" [formControl]="c1">
       </div>
     </div><br>
     <div class="row">
@@ -39,11 +39,11 @@
         <h4>Contraseña</h4>
       </div>
       <div class="col-8">
-        <input type="password" placeholder="********" style="width:80%;" [value]="clave" (input)="cambiaClave($event)">
+        <input type="password" style="width:80%;" [formControl]="c2">
       </div>
     </div><br><br>
     <label style="color: crimson;">{{datos.mensaje}}</label>
-    <h1><button type="button" style="width: 80%; background-color: blue; color: white; border-radius: 20px;" (click)="enviarDatos()">Iniciar sesión</button></h1><br>
+    <h1><button type="button" style="width: 80%; background-color: blue; color: white; border-radius: 20px;" (click)="enviarDatos()" [disabled]="a1.invalid || a2.invalid || a3.invalid || a4.invalid || c1.invalid || c2.invalid">Iniciar sesión</button></h1><br>
   </div>
   </div>
 </body>

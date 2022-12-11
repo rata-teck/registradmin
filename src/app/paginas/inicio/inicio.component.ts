@@ -1,6 +1,7 @@
-import { DatePipe } from '@angular/common';
+//import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import {PuenteService} from './../../servicios/puente.service';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-inicio',
@@ -14,64 +15,67 @@ export class InicioComponent {
 
   public fecha : number = 0;
 
-  public correo : string = '';
-  public clave : string = '';
+  private correo : string = '';
+  private clave : string = '';
 
-  public ip1 : number = 0;
-  public ip2 : number = 0;
-  public ip3 : number = 0;
-  public ip4 : number = 0;
+  public c1 = new FormControl('', [Validators.required, Validators.email]);
+  public c2 = new FormControl('', Validators.required);
 
-  public cambiaCorreo(event : Event) : void{
-    this.correo = (event.target as HTMLInputElement).value;
+  public a1 = new FormControl(0, [Validators.required, Validators.min(0), Validators.max(255)]);
+  public a2 = new FormControl(0, [Validators.required, Validators.min(0), Validators.max(255)]);
+  public a3 = new FormControl(0, [Validators.required, Validators.min(0), Validators.max(255)]);
+  public a4 = new FormControl(0, [Validators.required, Validators.min(0), Validators.max(255)]);
+
+  private ip1 : number = 0;
+  private ip2 : number = 0;
+  private ip3 : number = 0;
+  private ip4 : number = 0;
+
+  public enviarDatos() : void{
     this.fecha = Date.now();
-  }
-  public cambiaClave(event : Event) : void{
-    this.clave = (event.target as HTMLInputElement).value;
-  }
 
-  public cambiaIp1(event : Event) : void{
-    const a1 = Number((event.target as HTMLInputElement).value);
-    if(isNaN(a1)){
+    if(this.a1.value === null){
       this.ip1 = 0;
     }
     else{
-      this.ip1 = a1;
+      this.ip1 = this.a1.value;
     }
-  }
 
-  public cambiaIp2(event : Event) : void{
-    const a1 = Number((event.target as HTMLInputElement).value);
-    if(isNaN(a1)){
-      this.ip2 = 0;
+    if(this.a2.value === null){
+      this.ip2 = 0
     }
     else{
-      this.ip2 = a1;
+      this.ip2 = this.a2.value;
     }
-  }
 
-  public cambiaIp3(event : Event) : void{
-    const a1 = Number((event.target as HTMLInputElement).value);
-    if(isNaN(a1)){
+    if(this.a3.value === null){
       this.ip3 = 0;
     }
     else{
-      this.ip3 = a1;
+      this.ip3 = this.a3.value;
     }
-  }
 
-  public cambiaIp4(event : Event) : void{
-    const a1 = Number((event.target as HTMLInputElement).value);
-    if(isNaN(a1)){
+    if(this.a4.value === null){
       this.ip4 = 0;
     }
     else{
-      this.ip4 = a1;
+      this.ip4 = this.a4.value;
     }
-  }
 
-  public enviarDatos() : void{
-    //this.datos.verIp();
+    if(this.c1.value === null){
+      this.correo = '';
+    }
+    else{
+      this.correo = this.c1.value;
+    }
+
+    if(this.c2.value === null){
+      this.clave = '';
+    }
+    else{
+      this.clave = this.c2.value;
+    }
+
     this.datos.buscarDocente(this.correo, this.clave, this.ip1, this.ip2, this.ip3, this.ip4, this.fecha);
   }
 }
