@@ -1,4 +1,6 @@
-type Asistencia = {
+export interface Asistencia {
+  id : string,
+  alumno : string
   asignatura : string,
   estado : 'Presente' | 'Ausente' | 'Justificado',
   fecha : number
@@ -12,5 +14,4 @@ export interface Alumno {
   edad : number,
   genero : 'Masculino'|'Femenino',
   carrera : string,
-  asistencias : Array<Asistencia>
 }

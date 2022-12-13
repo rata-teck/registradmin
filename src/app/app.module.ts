@@ -15,6 +15,9 @@ import {QrCodeModule} from 'ng-qrcode';
 import { ListadoAsignaturasComponent } from './paginas/docente/portal/listado-asignaturas/listado-asignaturas.component';
 import { QrAsignaturaComponent } from './paginas/docente/portal/qr-asignatura/qr-asignatura.component';
 import { CalendarioPipe } from './servicios/calendario.pipe';
+import {AngularFireModule} from '@angular/fire/compat';
+import {environment} from './../enviroments/enviroment';
+import {AngularFirestoreModule} from '@angular/fire/compat/firestore'
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { CalendarioPipe } from './servicios/calendario.pipe';
     QrCodeModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [
     PuenteService
