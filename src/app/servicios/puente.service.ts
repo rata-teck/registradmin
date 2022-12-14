@@ -25,12 +25,28 @@ export class PuenteService {
       if(d2 !== undefined){
         if(d2.clave == clave){
           this.docente = d2;
+          this.paradero.navigateByUrl('/docente');
+          this.traerAsignaturas();
         }
       }
     });
     this.qrData.fecha = fecha;
-    this.traerAsignaturas();
-    this.paradero.navigateByUrl('/docente')
   }
-  public traerAsignaturas() : void{}
+  public traerAsignaturas() : void{
+    this.db.collection<Asignatura>('asignaturas').get().subscribe(data => {
+      for(let x of data.docs){
+        for(let z of this.docente.asignaturas){
+          if(z == x.id){
+            let a1 = x.data();
+            a1.id = x.id;
+            this.asignaturas.push(a1);
+          }
+        }
+      }
+    });
+  }
+
+  public buscarAsignatura(id:string): void{
+    this.qrData.asignatura = id;
+  }
 }
