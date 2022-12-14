@@ -68,8 +68,7 @@
               "browserTarget": "registr-admin:build:production"
             },
             "development": {
-              "browserTarget": "registr-admin:build:development",
-              "proxyConfig": "./proxy.conf.json"
+              "browserTarget": "registr-admin:build:development"
             }
           },
           "defaultConfiguration": "development"

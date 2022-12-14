@@ -1,83 +1,36 @@
 import { Injectable } from '@angular/core';
-
-import {Alumno, Asistencia} from '../modelos/alumno';
-import {Asignatura} from '../modelos/asignatura';
-import {Docente} from '../modelos/docente';
-import {Router, ActivatedRoute} from '@angular/router';
-import { delay } from 'rxjs';
-
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {Docente} from './../modelos/docente';
+import {Asignatura} from './../modelos/asignatura';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class PuenteService {
-
   constructor(
-    private portero : Router
+    public db :AngularFirestore,
+    private paradero : Router
   ) { }
-
-  public alumno : Alumno = {
-    nombre : '',
-    apellido : '',
-    id : '',
-    clave : '',
-    edad : 0,
-    genero : 'Masculino',
-    carrera : ''
-  }
-
-  public alumnos : Array<Alumno> = [];
-
-  public docente : Docente = {
-    nombre : '',
-    apellido : '',
-    especialidad : '',
-    genero : 'Masculino',
-    id : '',
-    clave : '',
-    asignaturas : []
-  }
-
-  public asignatura : Asignatura = {
-    nombre : '',
-    sigla : '',
-    seccion : '',
-    alumnos : [],
-    id : ''
-  }
-
-  public asignaturas : Array<Asignatura> = [];
-
+  public docente! : Docente;
   public mensaje : string = '';
-
-  public bdd : string = '';
-
-  public fecha : string = "";
-
   public qrData = {
     fecha : 0,
-    asignatura: ''
+    asignatura : ''
   }
-
-  //public obtenerDireccion() : void{
-    //const ip = require("local-ip-address");
-    //this.servidor = ip();
-  //}
-
-  public buscarDocente(correo : string, clave : string, fecha: number) : void{
+  public  asignaturas : Array<Asignatura> = [];
+  public buscarDocente(id : string, clave : string, fecha : number) : void{
+    this.db.doc<Docente>('docentes/'+id).get().subscribe(data => {
+      const d2 = data.data();
+      if(d2 !== undefined){
+        if(d2.clave == clave){
+          this.docente = d2;
+        }
+      }
+    });
     this.qrData.fecha = fecha;
+    this.traerAsignaturas();
+    this.paradero.navigateByUrl('/docente')
   }
-
-  public buscarAsignatura(codigo : string) : void{
-    this.qrData.asignatura = codigo;
-  }
-
-  public traerAsignaturas() : void{
-
-  }
-
-  public verIp() : void{
-  }
-
+  public traerAsignaturas() : void{}
 }

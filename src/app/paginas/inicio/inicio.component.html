@@ -11,21 +11,6 @@
   <div align="center">
   <div style="width: 60%;  border-radius: 20px; border-top: 2px solid black; border-bottom: 2px solid black; border-left: 2px solid black; border-right: 2px solid black;"><br><br>
     <h1>Acceso docente</h1><br><br><br><br>
-    <script type="text/javascript">
-      let a1 = location.href;
-      document.getElementById("intento").innerHTML = a1;
-    </script>
-    <div id="intento"></div>
-    <div class="row">
-      <div class="col-4">
-        <h4>URL</h4>
-      </div>
-      <div class="col-8">
-        <h4>
-          http://<input type="number" style="width: 10%;" [formControl]="a1">.<input type="number" style="width: 10%;" [formControl]="a2">.<input type="number" style="width: 10%;" [formControl]="a3">.<input type="number" style="width: 10%;" [formControl]="a4">:4200/acceso
-        </h4>
-      </div>
-    </div>
     <div class="row">
       <div class="col-4">
         <h4>Correo electrónico</h4>
@@ -43,7 +28,7 @@
       </div>
     </div><br><br>
     <label style="color: crimson;">{{datos.mensaje}}</label>
-    <h1><button type="button" style="width: 80%; background-color: blue; color: white; border-radius: 20px;" (click)="enviarDatos()" [disabled]="a1.invalid || a2.invalid || a3.invalid || a4.invalid || c1.invalid || c2.invalid">Iniciar sesión</button></h1><br>
+    <h1><button type="button" style="width: 80%; background-color: blue; color: white; border-radius: 20px;" (click)="enviarDatos()" [disabled]="c1.invalid || c2.invalid">Iniciar sesión</button></h1><br>
   </div>
   </div>
 </body>

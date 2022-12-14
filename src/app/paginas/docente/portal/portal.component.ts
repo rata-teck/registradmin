@@ -19,7 +19,7 @@ export class PortalComponent {
   }
 
   public elegirAsignatura(id : string) : void{
-    this.datos.buscarAsignatura(id);
+    //this.datos.buscarAsignatura(id);
     this.modo = 2;
   }
 
