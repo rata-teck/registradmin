@@ -23,4 +23,9 @@ export class PortalComponent {
     this.modo = 2;
   }
 
+  public guardar() : void{
+    this.datos.cerrarAsistencia();
+    this.modo = 1;
+  }
+
 }

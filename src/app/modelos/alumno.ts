@@ -1,5 +1,4 @@
 export interface Asistencia {
-  id : string,
   alumno : string
   asignatura : string,
   estado : 'Presente' | 'Ausente' | 'Justificado',

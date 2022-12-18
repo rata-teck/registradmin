@@ -27,6 +27,6 @@
   </ul>
 </nav><br><br>
 <app-listado-asignaturas *ngIf="modo == 1" [asignaturas]="datos.asignaturas" (laGarra)="elegirAsignatura($event)"></app-listado-asignaturas>
-<app-qr-asignatura *ngIf="modo == 2" [data]="datos.qrData"></app-qr-asignatura>
+<app-qr-asignatura *ngIf="modo == 2" [data]="datos.qrData" (espada)="guardar()"></app-qr-asignatura>
 </body>
 </html>

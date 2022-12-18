@@ -3,6 +3,7 @@ import {AngularFirestore} from '@angular/fire/compat/firestore';
 import {Docente} from './../modelos/docente';
 import {Asignatura} from './../modelos/asignatura';
 import {Router} from '@angular/router';
+import { Alumno, Asistencia } from '../modelos/alumno';
 
 @Injectable({
   providedIn: 'root'
@@ -48,5 +49,70 @@ export class PuenteService {
 
   public buscarAsignatura(id:string): void{
     this.qrData.asignatura = id;
+  }
+  
+  public cerrarAsistencia() : void {
+    let presentes : Array<string> = [];
+    let ausentes : Array<string> = [];
+    let ids : Array<string> = [];
+    let total : Array<string> = [];
+
+    // Alumnos de la asignatura
+    this.db.doc<Asignatura>('asignaturas/'+this.qrData.asignatura).get().subscribe(data1 => {
+      const a01 = data1.data();
+      if(a01 !== undefined){
+        for(let a02 of a01.alumnos){
+          total.push(a02);
+        }
+      }
+    });
+
+    // Todos los presentes
+    this.db.collection<Asistencia>('asistencias').get().subscribe(data2 => {
+      const a03 = data2.docs;
+      for(let a04 of a03){
+        if(a04.data().estado == 'Presente'){
+          ids.push(a04.id);
+        }
+      }
+    });
+
+    // Presentes de la asignatura y fecha indicada
+    for(let a05 of ids){
+      this.db.doc<Asistencia>('asistencias/'+a05).get().subscribe(data3 => {
+        const a06 = data3.data();
+        if(a06 !== undefined){
+          for(let a07 of total){
+            if(a06.alumno == a07 && a06.asignatura == this.qrData.asignatura && a06.fecha == this.qrData.fecha){
+              presentes.push(a07);
+            }
+          }
+        }
+      });
+    }
+
+    // Ausentes = Total - Presentes;
+    for(let a08 of total){
+      let a09 = '';
+      for(let a10 of presentes){
+        if(a08 == a10){
+          a09 = a08;
+        }
+      }
+      if(a09 != a08){
+        ausentes.push(a08);
+      }
+    }
+
+    // Grabar ausentes
+    for(let a11 of ausentes){
+      let a12 : Asistencia = {
+        alumno: a11,
+        asignatura: this.qrData.asignatura,
+        estado: 'Ausente',
+        fecha: this.qrData.fecha
+      }
+      this.db.collection<Asistencia>('asistencias').add(a12);
+    }
   }
 }
