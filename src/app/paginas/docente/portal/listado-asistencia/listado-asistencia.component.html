@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Presentes de hoy {{fecha | date:'dd/MM/yyyy'}} a las {{fecha | date:'hh:mm'}}</h1><br><br>
+    <table class="table table-stripped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Carrera</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of presentes">
+                <td>{{x.nombre}}</td>
+                <td>{{x.apellido}}</td>
+                <td>{{x.carrera}}</td>
+                <td>Presente</td>
+            </tr>
+            <tr *ngFor="let y of ausentes">
+                <td>{{y.nombre}}</td>
+                <td>{{y.apellido}}</td>
+                <td>{{y.carrera}}</td>
+                <td>Ausente</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

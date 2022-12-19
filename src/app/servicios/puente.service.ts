@@ -19,6 +19,10 @@ export class PuenteService {
     fecha : 0,
     asignatura : ''
   }
+
+  public presentes : Array<Alumno> = [];
+  public ausentes : Array<Alumno> = [];
+
   public  asignaturas : Array<Asignatura> = [];
   public buscarDocente(id : string, clave : string, fecha : number) : void{
     this.db.doc<Docente>('docentes/'+id).get().subscribe(data => {
@@ -54,65 +58,81 @@ export class PuenteService {
   public cerrarAsistencia() : void {
     let presentes : Array<string> = [];
     let ausentes : Array<string> = [];
-    let ids : Array<string> = [];
-    let total : Array<string> = [];
+    let todos : Array<string> = [];
 
     // Alumnos de la asignatura
     this.db.doc<Asignatura>('asignaturas/'+this.qrData.asignatura).get().subscribe(data1 => {
       const a01 = data1.data();
       if(a01 !== undefined){
         for(let a02 of a01.alumnos){
-          total.push(a02);
+          todos.push(a02);
         }
       }
     });
 
-    // Todos los presentes
-    this.db.collection<Asistencia>('asistencias').get().subscribe(data2 => {
-      const a03 = data2.docs;
-      for(let a04 of a03){
-        if(a04.data().estado == 'Presente'){
-          ids.push(a04.id);
-        }
-      }
-    });
-
-    // Presentes de la asignatura y fecha indicada
-    for(let a05 of ids){
-      this.db.doc<Asistencia>('asistencias/'+a05).get().subscribe(data3 => {
-        const a06 = data3.data();
-        if(a06 !== undefined){
-          for(let a07 of total){
-            if(a06.alumno == a07 && a06.asignatura == this.qrData.asignatura && a06.fecha == this.qrData.fecha){
-              presentes.push(a07);
+    // Alumnos presentes
+    for(let a03 of todos){
+      this.db.collection<Asistencia>('asistencias').get().subscribe(data2 => {
+        let a04 = data2.docs;
+        for(let a05 of a04){
+          let a06 = a05.data();
+          if(a06 !== undefined){
+            if(a06.alumno == a03){
+              if(a06.asignatura == this.qrData.asignatura){
+                if(a06.fecha == this.qrData.fecha){
+                  if(a06.estado == 'Presente'){
+                    presentes.push(a03);
+                  }
+                }
+              }
             }
           }
         }
       });
     }
 
-    // Ausentes = Total - Presentes;
-    for(let a08 of total){
-      let a09 = '';
-      for(let a10 of presentes){
-        if(a08 == a10){
-          a09 = a08;
+    // Alumnos ausentes
+    for(let a07 of todos){
+      let a08 = 0;
+      for(let a09 of presentes){
+        if(a07 == a09 ){
+          a08 += 1;
         }
       }
-      if(a09 != a08){
-        ausentes.push(a08);
+      if(a08 == 0){
+        ausentes.push(a07);
       }
     }
 
     // Grabar ausentes
-    for(let a11 of ausentes){
-      let a12 : Asistencia = {
-        alumno: a11,
-        asignatura: this.qrData.asignatura,
-        estado: 'Ausente',
-        fecha: this.qrData.fecha
+    for(let a10 of ausentes){
+      let a11 : Asistencia = {
+        alumno : a10,
+        asignatura : this.qrData.asignatura,
+        estado : 'Ausente',
+        fecha : this.qrData.fecha
       }
-      this.db.collection<Asistencia>('asistencias').add(a12);
+      this.db.collection('asistencias').add({...a11});
+    }
+
+    // Listar presentes
+    for(let a12 of presentes){
+      this.db.doc<Alumno>('alumnos/'+a12).get().subscribe(data3 => {
+        let a13 = data3.data();
+        if(a13 !== undefined){
+          this.presentes.push(a13);
+        }
+      });
+    }
+
+    // Listar ausentes
+    for(let a14 of ausentes){
+      this.db.doc<Alumno>('alumnos/'+a14).get().subscribe(data4 => {
+        let a15 = data4.data();
+        if(a15 !== undefined){
+          this.ausentes.push(a15);
+        }
+      });
     }
   }
 }

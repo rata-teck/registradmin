@@ -28,5 +28,6 @@
 </nav><br><br>
 <app-listado-asignaturas *ngIf="modo == 1" [asignaturas]="datos.asignaturas" (laGarra)="elegirAsignatura($event)"></app-listado-asignaturas>
 <app-qr-asignatura *ngIf="modo == 2" [data]="datos.qrData" (espada)="guardar()"></app-qr-asignatura>
+<app-listado-asistencia *ngIf="modo == 3" [fecha]="datos.qrData.fecha" [presentes]="datos.presentes" [ausentes]="datos.ausentes"></app-listado-asistencia>
 </body>
 </html>

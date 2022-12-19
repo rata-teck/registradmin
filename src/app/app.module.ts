@@ -15,6 +15,7 @@ import { QrAsignaturaComponent } from './paginas/docente/portal/qr-asignatura/qr
 import {AngularFireModule} from '@angular/fire/compat';
 import {environment} from './../enviroments/enviroment';
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { ListadoAsistenciaComponent } from './paginas/docente/portal/listado-asistencia/listado-asistencia.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
     InicioComponent,
     PortalComponent,
     ListadoAsignaturasComponent,
-    QrAsignaturaComponent
+    QrAsignaturaComponent,
+    ListadoAsistenciaComponent
   ],
   imports: [
     BrowserModule,
